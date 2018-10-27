@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`A component parent component matches snapshot 1`] = `
+<Parent>
+  <Child
+    n={0}
+  >
+    <h1>
+      0
+    </h1>
+  </Child>
+  <button
+    onClick={[Function]}
+  >
+    Click
+  </button>
+</Parent>
+`;
+
+exports[`A component parent component matches snapshot 2`] = `
+<Fragment>
+  <Child
+    n={0}
+  />
+  <button
+    onClick={[Function]}
+  >
+    Click
+  </button>
+</Fragment>
+`;
