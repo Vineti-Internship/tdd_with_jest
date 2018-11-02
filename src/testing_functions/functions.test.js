@@ -1,23 +1,30 @@
-import {sum, factorial} from './functions';
+import { sort } from './functions';
 
 describe('Helper functions', () => {
-  describe('Sum function', () => {
-    it('returns the sum of two numbers', () => {
-      expect(sum(2,5)).toBe(7);
-      expect(sum(1, 2)).toBe(3);
-      expect(sum(5, 1)).toBe(6);
-      expect(sum(11, 6)).toBe(17);
-      expect(sum(64, 1)).toBe(65);
-      expect(sum(0, 134)).toBe(134);
+  describe('sort function', () => {
+    describe('in ascending order', () => {
+      test('it sorts the array', () => {
+        const arr = [1,2,6,6,3,3,100,6,3,1,2,32,31,32,3];
+        const res = sort(arr, 'asc');
+        expect(res).toEqual(arr.sort((a,b) => a-b));
+      });
     });
 
-    it('returns the sum of two random numbers', () => {
-      for(let i = 0; i <= 10; i++){
-        const n1 = Math.floor(Math.random()*100);
-        const n2 = Math.floor(Math.random()*100);
-        const s = n1 + n2;
-        expect(sum(n1, n2)).toBe(s);
-      }
+    describe('in descending order', () => {
+      test('it sorts the array', () => {
+        const arr = [1,2,6,6,3,3,100,6,3,1,2,32,31,32,3];
+        const res = sort(arr, 'desc');
+        const sorted = arr.sort((a,b) => a-b).reverse();
+        expect(res).toEqual(sorted);
+      });
+    });
+
+    describe('when order is not given', () => {
+      test('it takes ascending by default', () => {
+        const arr = [1,2,6,6,3,3,100,6,3,1,2,32,31,32,3];
+        const res = sort(arr);
+        expect(res).toEqual(arr.sort((a,b) => a-b));
+      });
     });
   });
 });
