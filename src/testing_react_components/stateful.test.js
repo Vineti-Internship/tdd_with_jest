@@ -1,28 +1,11 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
-import {Parent, Child} from './a';
+import Parent from './stateful';
+import Child from './stateless';
 
-describe('A component', () => {
+describe('Parent component', () => {
   let component;
   describe('parent component', () => {
-    // Without enzyme
-    test('has correct init state', () => {
-      component = renderer.create(<Parent />);
-      const {state} = component.getInstance();
-      expect(state).toEqual({n: 0});
-    });
-
-    test('updates state when calling clickHanlder', () => {
-      component = renderer.create(<Parent />);
-      const inst = component.getInstance();
-      const oldState = {...inst.state};
-      inst.clickHandler();
-      const {state} = inst;
-      expect(state.n).toBe(oldState.n + 1);
-    });
-
-    // With enzyme
     test('renders one child component', () => {
       component = mount(<Parent />);
       expect(component.find(Child).length).toBe(1);
@@ -31,6 +14,13 @@ describe('A component', () => {
     test('renders one button', () => {
       component = mount(<Parent />);
       expect(component.find('button').length).toBe(1);
+    });
+
+    test('has correct initial state', () => {
+      const state = component.state();
+      expect(state).toEqual({
+        n: 0
+      });
     });
 
     describe('when clicking on the button', () => {

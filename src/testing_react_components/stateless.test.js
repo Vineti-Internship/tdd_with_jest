@@ -1,16 +1,15 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import {Child} from './a';
+import Component from './stateless';
 
-describe('A component', () => {
-
+describe('The Stateless component', () => {
   let component;
+
   beforeEach(() => {
-    component = shallow(<Child n={1} />);
+    component = shallow(<Component n={1} />);
   });
 
   describe('child component', () => {
-
     test('renders a h1 tag', () => {
       expect(component.find('h1').length).toBe(1);
     });

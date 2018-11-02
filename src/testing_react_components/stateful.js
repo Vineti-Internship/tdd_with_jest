@@ -1,14 +1,8 @@
 import React from 'react';
+import Child from './stateless';
 
-export class Child extends React.PureComponent {
-  render(){
-    return(
-      <h1>{this.props.n}</h1>
-    );
-  }
-};
-
-export class Parent extends React.PureComponent {
+export default
+class Parent extends React.PureComponent {
   state = {
     n: 0
   };
