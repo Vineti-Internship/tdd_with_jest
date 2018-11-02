@@ -6,13 +6,16 @@ import Child from './stateless';
 describe('Parent component', () => {
   let component;
   describe('parent component', () => {
-    test('renders one child component', () => {
+
+    beforeEach(() => {
       component = mount(<Parent />);
+    });
+
+    test('renders one child component', () => {
       expect(component.find(Child).length).toBe(1);
     });
 
     test('renders one button', () => {
-      component = mount(<Parent />);
       expect(component.find('button').length).toBe(1);
     });
 
@@ -26,7 +29,6 @@ describe('Parent component', () => {
     describe('when clicking on the button', () => {
       let button;
       beforeEach(() => {
-        component = mount(<Parent />);
         button = component.find('button');
       });
 
